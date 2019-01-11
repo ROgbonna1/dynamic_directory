@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Top 5</title>
+
+</head>
+
+<body>
+  <% if params['reverse'] == "true" %>
+    <a href="/">Sort Ascending</a>
+  <% else %>
+    <a href="/?reverse=true" >Sort Descending</a>
+  <% end %>
+  <br><br>
+  
+  <ol>
+  <% @files.each do |file| %>
+  <li>
+    <a href="/<%= file.match(file.split(".").first) %>"> 
+      <%= File.basename(file, ".*").gsub("_", " ") %> 
+    </a>
+  </li>
+  
+  <% end %>
+  </ol>
+</body>
